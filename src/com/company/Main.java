@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Main {
 
     public static void main(String[] args) {
-        String nomer = "+7 (924) 682+7 823";
+        String nomer = "+7 (924) 6827 823";
         System.out.println(Arrays.toString(clear(nomer)));
     }
 
@@ -26,6 +26,10 @@ public class Main {
 
         if (nom.length() > 11) {
             mess = "Количество символов больше 11";
+        }
+
+        if(mess.equals("")){
+            mess= "Не было изменений";
         }
 
         if (nom.length() == 11) {
