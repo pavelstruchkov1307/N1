@@ -1,47 +1,42 @@
 package com.company;
 
+import java.util.Arrays;
+
 public class Main {
 
     public static void main(String[] args) {
-        String nomer = "+7 (924) 6827 823";
-        clear(nomer);
+        String nomer = "+7 (924) 682+7 823";
+        System.out.println(Arrays.toString(clear(nomer)));
     }
 
-    public static void clear(String nom) {
-        String corNom = "";
-        boolean mess1 = false;
-        boolean mess2 = false;
-        for (int i = 0; i < nom.length(); i++) {
-            if (nom.charAt(i) == '+') {
-                corNom = corNom + "8";
-                i++;
-                mess1 = true;
-            } else if (nom.charAt(i) == ' ' || nom.charAt(i) == ')' || nom.charAt(i) == '(') {
-                mess2 = true;
-            } else {
-                corNom = corNom + nom.charAt(i);
-            }
+    public static String[] clear(String nom) {
+        String[] arrStr = new String[2];
+        String mess = "";
 
+        if (nom.startsWith("+7")) {
+            nom = nom.replace("+7", "8");
+            mess += "Замена +7 на 8;";
         }
-        if (corNom.length() == 11) {
-            System.out.println(corNom);
+
+        if (nom.contains(" ") || nom.contains(")") || nom.contains("(")) {
+            nom = nom.replaceAll("\\s+", "");
+            nom = nom.replaceAll("\\p{P}", "");
+            mess += " В номере есть пробелы и/или скобки";
+        }
+
+        if (nom.length() > 11) {
+            mess = "Количество символов больше 11";
+        }
+
+        if (nom.length() == 11) {
+            arrStr[0] = nom;
         } else {
-            System.out.println("Введен некорректный номер");
+            arrStr[0] = "Введен некорректный номер";
         }
 
+        arrStr[1] = mess;
 
-        if (mess1) {
-            System.out.print("Замена +7 на 8; ");
-        }
-        if (mess2) {
-            System.out.print("В номере есть пробелы и/или скобки; ");
-        }
-        if (corNom.length() > 11) {
-            System.out.print("Сумма символов больше 11;");
-        }
-        if(!mess1 && !mess2){
-            System.out.println("Не было изменений");
-        }
+        return arrStr;
 
     }
 }
