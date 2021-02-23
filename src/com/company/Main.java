@@ -12,7 +12,7 @@ public class Main {
     public static String[] clear(String nom) {
         String[] arrStr = new String[2];
         String mess = "";
-        String sizeNom="";
+        String sizeNom = "";
 
         if (nom.startsWith("+7")) {
             nom = nom.replace("+7", "8");
@@ -26,20 +26,20 @@ public class Main {
         }
 
         if (nom.length() > 11) {
-            sizeNom = " Количество символов больше 11:кол-во символов="+ nom.length();
+            sizeNom = " Количество символов больше 11:кол-во символов=" + nom.length();
         }
 
-        if(mess.equals("")){
-            mess= "Не было изменений";
+        if (mess.equals("")) {
+            mess = "Не было изменений";
         }
 
         if (nom.length() == 11) {
             arrStr[0] = nom;
         } else {
-            arrStr[0] = "Введен некорректный номер:кол-во символов="+ nom.length();
+            arrStr[0] = "Введен некорректный номер:кол-во символов=" + nom.length();
         }
 
-        arrStr[1] = mess+sizeNom;
+        arrStr[1] = mess + sizeNom;
 
         return arrStr;
 
